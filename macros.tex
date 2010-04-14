@@ -1,3 +1,28 @@
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{caption}
+\usepackage[german]{babel}
+\usepackage{fontenc}
+\usepackage{graphicx}
+\usepackage{makeidx}
+\usepackage{fancyhdr}
+\usepackage[dvips]{hyperref}
+
+\usepackage{listings}
+\usepackage{fancyhdr}
+
+\makeindex
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
 \newcounter{Vorlesung}
-\newcommand{\Datum}[2]{%
-  \marginpar{\stepcounter{Vorlesung}\small \arabic{Vorlesung}.~Vorl.\\ #2}}
+\newcommand{\Vorlesung}[1]{%
+  \stepcounter{Vorlesung}\small Vorlesung vom #1\newline}
+
+\newcommand{\Begriff}[1]{%
+  \marginpar{#1}\textit{#1} \index{#1}}

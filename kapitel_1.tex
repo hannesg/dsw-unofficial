@@ -1,0 +1,27 @@
+
+\chapter{Mathematische\ Modellierung\ des\ Zufalls}
+\section{Zufallsexperimente}
+\subsection{Das Würfeln}
+\Vorlesung{14.4.2010}
+$\Omega = \lbrace 1, ... , n  \rbrace , n \in \mathbb{N}$ Wir möchten zufällig genau eine Zahl aus $\Omega$ ziehen. Eine Möglichkeit: n-seitiger Würfel\newline
+Ansatz: $Pr[i] = \frac{1}{n}  \forall i \in \Omega$\newline
+$Pr \mathrel{\widehat{=}} ``Probability''$\newline
+Sei $A=\lbrace a_1, ... , a_k \rbrace \subset \Omega$, dann ist $Pr[A]=\frac{\left|A\right|}{n} = \frac{k}{n}$ die Wahrscheinlichkeit, dass $a_1, ..., a_{k-1}$ oder $a_{k}$ ausgewählt werden.\newline
+A nennt man \Begriff{Ergeignis}\newline
+Wenn alle $Pr[i]$ gleich sind so spricht man von einer \Begriff{Gleichverteilung}.\newline
+Bei Spielen: n=6
+Es herrscht Unabhängigkeit der Würfe, d.h. Ergebnisse beeinflussen sich nicht.
+
+\subsection{Das Lottospiel}
+Es werden 6 Zahlen aus 49 gezogen, sagen wir $a_1, .. a_6$. Wir nehmen an, dass wir diese schon geordnet haben: $a_1 < ... < a_6$. Eine Ziehung ist ein Vektor $(a_1,...,a_6)$ mit $a_1 < ... < a_6$. Ergebnisse sind diese Vektoren. Man fasst die Ergebnisse zu einem \Begriff{Grundraum} zusammen, den wir üblicherweise $\Omega$ nennen.
+$$ \Omega = \lbrace \lbrace a_1,...,a_6 \rbrace \mid a_i \in \lbrace 1,...,49 \rbrace \forall i=1...6  \rbrace$$
+$$ \left|\Omega\right| = \binom{49}{6} = 13983816$$%
+Wie hoch ist die Wahrscheinlichkeit, dass ein Tipp 6 Richtige hat? Allgemeiner: k Richtige? %
+Welche $\lbrace a_1,...,a_6 \rbrace \in \Omega$ haben $k$ Stellen gemeinsam mit dem Tipp? %
+Die bezeichnen wir als \Begriff{günstige\ Ereignisse}.\newpage%
+
+$$A = \lbrace \lbrace a_1,...,a_6 \rbrace \in \Omega \mid \left| \lbrace a_1,...,a_6 \rbrace \bigcup \lbrace b_1,...,b_6 \rbrace \right| = k \rbrace$$%
+
+Wenn ein Element aus $A$ gezogen wird haben wir $k$ Richtige.%
+$$ Pr[k \textrm{Richtige}]=\frac{\left| A \right|}{\left| \Omega \right|} = \frac{\binom{6}{k} \cdot \binom{43}{6-k}}{\binom{49}{6}}$$
+$$\Rightarrow Pr[6 \textrm{Richtige}]= \frac{\binom{6}{6} \binom{43}{0}}{\binom{49}{6}}=\binom{1}{49}$$
