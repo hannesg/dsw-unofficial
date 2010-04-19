@@ -25,3 +25,70 @@ $$A = \lbrace \lbrace a_1,...,a_6 \rbrace \in \Omega \mid \left| \lbrace a_1,...
 Wenn ein Element aus $A$ gezogen wird haben wir $k$ Richtige.%
 $$ Pr[k \textrm{Richtige}]=\frac{\left| A \right|}{\left| \Omega \right|} = \frac{\binom{6}{k} \cdot \binom{43}{6-k}}{\binom{49}{6}}$$
 $$\Rightarrow Pr[6 \textrm{Richtige}]= \frac{\binom{6}{6} \binom{43}{0}}{\binom{49}{6}}=\binom{1}{49}$$
+\Vorlesung{19.4.2010}
+\subsection{Das Geburtstagsproblem}
+Wie hoch ist die Wahrscheinlichkeit, dass zwei Personen in einer Gruppe von $m$ Personen am gleichen Tag Geburtstag haben?
+z.B.: $m=50$
+% Abb 1
+\subsection{Das Ziegenproblem}
+Bei einem Fernsehquiz gibt es drei Türen, wobei hinter zwei Türen eine Ziege steht und hinter der dritten Tür ein Hauptgewinn. %
+Der Showmaster fragt den Kandidaten, welche Tür er öffnen soll. Nachdem der Kandidat einen Tipp abgegeben hat, bietet der Showmaster seine Hilfe an: %
+Er schlägt vor eine Tür zu öffnen und danach soll der Kandidat die Möglichkeit haben seinen Tipp zu verändern.%
+Würden Sie sein Angebot annehmen?
+% Abb 2
+\begin{quote}
+ In diesem Fall ist es nicht so einfach, da die günstigen Ergeignisse nicht unabhängig sind.
+\end{quote}
+\section{Algebra und Maße}
+Die axiomatische Fundierung der Wahrscheinlichkeitsrechnung wurder von Kolmogoroff Anfang des 20. Jahrhunderts gegeben. Erst dadurch wurde Wahrscheinlichkeitsrechnung eine wissenschaftliche und quantitative Disziplin.
+\subsection{Die Axiome von Komolgoroff}
+\begin{itemize}
+ \item Ergebnisse eines Zufallsexperimentes fassen wir in einer Menge $\Omega$ zusammen.
+ \item \Begriff{Ereignisse} sind gewisse Teilmengen von $\Omega$.
+ \item Wahrscheinlichkeiten werden auf Ereignisse bezogen und sind Zahlen zwischen 0 und 1. Eine Zahl $p \in [0,1]$,z.B. $p=\frac{3}{4}$ besagt dass das entsprechende Ereigniss in $\frac{3}{4}$ der Zufallsexperimente auftrit, oder die Wahrscheinlichkeit ist 75 Prozent.
+
+$p=0$: Das Ereignis tritt nicht auf.
+
+$p=1$: Das Ereignis tritt stets auf.
+\end{itemize}
+Beispiel: Wir werfen eine faire Münze. Kopf und Zahl kommen mit der gleichen Wahrscheinlichkeit.
+$$ \textrm{Menge } \Omega = \{\textrm{Kopf},\textrm{Zahl}\} = \{0,1\} $$
+$$ \textrm{Ereignisse} = \{\{0\},\{1\},\emptyset,\{0,1\}\} = \mathcal P(\Omega) = \textrm{Potenzmenge von } \Omega $$
+$$ P(\{0\})=\frac{1}{2}=P(\{1\}), P(\emptyset)=0 , P(\{0,1\})=1$$
+\subsection{``Erweiterung'' der Kolmogoroff-Axiome}
+
+Wie muss die Menge der Ereignisse aussehen?
+\begin{itemize}
+ \item $A$ Ereignis mit Wahrscheinlichkeit $p$. Wir möchten das Gegenereignis (``$A$ tritt nicht auf'' = $A^c$) ebenfalls als Ereignis ansehen mit der Wahrscheinlichkeit $1-p$.
+ \item Ereignisse $A$,$B$ mit den Wahrscheinlichkeiten $p$ und $q$ . Was ist das Ereignis ``$A$ oder $B$'' bzw. ?
+
+ ``$A$ oder $B$'' = $A \cup B$
+
+ ``$A$ und $B$'' = $A \cap B$
+
+ Mithin sollten auch diese Ereignisse in der Ereignismenge drin sein.
+ \item Was ist $P(A \cup B)$?
+
+Situation: $A \cap B = \emptyset$ dann ist $P(A \cup B) = P(A) + P(B)$
+
+\end{itemize}
+\subsection{$\sigma$-Algebra}
+Definition 1.1 Es sei $\Omega$ eine Menge und $\Sigma \subseteq \mathcal P(\Omega)$. $\Sigma$ heißt $\sigma$-Algebraüber $\Omega$ fallse folgende Eigenschaften gelten:
+\begin{quote}
+ Das $sigma$ steht für die Abzählbarkeit der Vereinigung. Für bestimmte Modellierungen ist die Potenzmenge zu groß, daher beschränkt man sich auf eine Teilmenge.
+\end{quote}
+
+\begin{itemize}
+ \item $\Omega, \emptyset \in \Sigma$
+ \item $A \in \Sigma \Rightarrow A^c \in \Sigma$
+ \item Für eine Folge $A_1,A_2,... \in \Sigma$ gilt:
+$$ \bigcup_{i=1}^\infty A_i \in \Sigma$$ ( $\Sigma$-Abgeschlossenheit )
+\end{itemize}
+Ereignisse über einer Menge $\Omega$ werden in der Wahrscheinlichkeitstheorie durch eine geeignete $\sigma$-Algebra beschrieben wird.
+
+Was ist mit $A \cap B$ falls $A,B \in \Sigma$? Ist $A \cap B \in \Sigma$?
+$$ A \cap B = (A^c \cup B^c)^c$$
+$$ \Rightarrow A^c, B^c \in \Sigma \Rightarrow A^c \cup B^c \in \Sigma \Rightarrow (A^c \cup B^c)^c \in \Sigma $$
+
+$\{\emptyset, \Omega\}$ ist die kleinste und $\mathcal P(\Omega)$ ist die größte $\sigma$-Algebra über $\Omega$.
+
