@@ -73,7 +73,9 @@ Situation: $A \cap B = \emptyset$ dann ist $P(A \cup B) = P(A) + P(B)$
 
 \end{itemize}
 \subsection{$\sigma$-Algebra}
-Definition 1.1 Es sei $\Omega$ eine Menge und $\Sigma \subseteq \mathcal P(\Omega)$. $\Sigma$ heißt $\sigma$-Algebraüber $\Omega$ fallse folgende Eigenschaften gelten:
+\begin{definition}
+Es sei $\Omega$ eine Menge und $\Sigma \subseteq \mathcal P(\Omega)$. $\Sigma$ heißt $\sigma$-Algebraüber $\Omega$ fallse folgende Eigenschaften gelten:
+\end{definition}
 \begin{quote}
  Das $\sigma$ steht für die Abzählbarkeit der Vereinigung. Für bestimmte Modellierungen ist die Potenzmenge zu groß, daher beschränkt man sich auf eine Teilmenge.
 \end{quote}
@@ -92,7 +94,7 @@ $$ \Rightarrow A^c, B^c \in \Sigma \Rightarrow A^c \cup B^c \in \Sigma \Rightarr
 
 $\{\emptyset, \Omega\}$ ist die kleinste und $\mathcal P(\Omega)$ ist die größte $\sigma$-Algebra über $\Omega$.
 \Vorlesung{21.4.2010}
-Beispiel:
+\begin{example}
 Sei $\mathcal F$ die Menge der abgeschlossenen Intervalle der Form $[a,b] \in \mathbb R^d; a,b \in \mathbb R^d$
 $$ [a,b]=[a_1,b_1] \times ... \times [a_d,b_d], a=(a_1,...,a_d), b=(b_1	,...b_d)$$
 
@@ -104,6 +106,7 @@ Für d=2:
 Für d=3: 
 
 % Würfeln
+\end{example}
 $\mathcal B^d$ sei die kleinste $\sigma$-Algebra über $\mathbb R^d$, die $\mathcal F$ enthält. Unter kleinste verstehen wir, dass jede $\sigma$-Umgebung $\Sigma$ mit $\Sigma \supset \mathcal F$ und $\Sigma \subseteq \mathcal{B}^d$ $\Sigma = \mathcal{B}^d$ erfüllt.
 
 Warum existiert $\mathcal{B}^d$?
@@ -120,21 +123,27 @@ Wie sehen die Mengen in $\mathcal B^d$ aus?
 
 Für eine Menge $X \subseteq \mathcal P(\Omega)$ verstehen wir unter $\sigma(X)$ die kleinster $\sigma$-Algebra, die $X$ enthält. Sie $\mathcal O$ die Menge der offenen Intervall in $\mathbb R^d$. Betrachte $\sigma(\mathcal O)$.
 
-Behauptung:
+\begin{theorem}
 $$ X \subseteq \mathcal P(\Omega); Y \subseteq \mathcal P(\Omega), X \subseteq Y \Rightarrow$$
 $$ \sigma(X) \subseteq \sigma(Y)$$
-Beweis: Nehme $Z \in \sigma(X) \Rightarrow Z \in \sigma(Y)$.
+\end{theorem}
+\begin{proof}
+Nehme $Z \in \sigma(X) \Rightarrow Z \in \sigma(Y)$.
 
 Ausgangssituation:
 $\Omega$ ist gegeben. $X$ ist Menge von Teilmengen von $\Omega$ d.h. $X \subseteq \mathcal P(\Omega)$.
 Dann ist $\sigma(X)$ die kleinste $\sigma$-Algebra über $\Omega$, die $X$ enthält, d.h. $X \in \sigma(X)$.
+\end{proof}
 
 \Vorlesung{26.4.2010}
 $\sigma(\mathcal O)$ ist die kleinste $\sigma$-Algebra, die die Menge $\mathcal O$ der offenen Intervalle in $\mathbb R^d$ enthält.
 
-Satz 1.3: $\mathcal B^d = \sigma(\mathcal O)$
+\begin{theorem}
+$\mathcal B^d = \sigma(\mathcal O)$
+\end{theorem}
 
-Beweis: Zur Vereinfachung sei $d=1$.
+\begin{proof}
+Zur Vereinfachung sei $d=1$.
 \begin{itemize}
  \item[Zunächst $\mathcal B^d \subseteq \sigma(\mathcal O)$:]
 Wir wissen, dass $\mathcal B^d = \sigma(\mathcal F)$ ist. $\mathcal F$ ist Erzeuger von $\mathcal B^d$.
@@ -182,7 +191,7 @@ Die Vereinigung ist nur in $\mathcal B^d$ falls $A$ abzählbar ist.
 Es gibt Teilmengen des $\mathbb R^d$ die keine Borelmengen sind!
 $$ \mathcal B ^d \subsetneq \mathcal P (\mathbb R^d) $$
 Diese nennt man \Begriff{Cantor-Mengen}.
-
+\end{proof}
 
 
 Um die Wahrscheinlichkeit eines Ereignisses zu definieren möchten wir - wenn Ereignisse durch Elemente einer $\sigma$-Algebra beschreiben werde, also Teilmengen einer Grundmenge $\Omega$ sind - diesen Teilmengen eine Maßzahl zuordnen, d.h. sie messen.
@@ -197,7 +206,7 @@ Falls $\lvert A \rvert = \infty$ so ist ein Maß der Form $\lvert A \rvert$ zu u
 \section{Wahrscheinlichkeitsraum}
 Ist $\Sigma$ eine $\sigma$-Algebra über $\Omega$, so nennt man $(\Omega,\Sigma)$ einen \Begriff{Meßraum}.
 
-Definition 1.5. Sei $(\Omega,\Sigma)$ ein Meßraum.
+\begin{definition} Sei $(\Omega,\Sigma)$ ein Meßraum.
 \begin{enumerate}
  \item Eine Funktion $µ: \Sigma \rightarrow [0,\infty]$ heißt \Begriff{Maß} falls folgendes gilt:
   \begin{enumerate}
@@ -209,6 +218,7 @@ $$ µ \left ( \bigcup_{i=1}^\infty A_i \right ) = \sum_{i=1}^\infty µ \left ( A
  \item Ein Maß $P: \Sigma \rightarrow [0,1]$ mit $P(\Omega) = 1$ heißt \Begriff{Wahrscheinlichkeitsmaß}.
  \item Das Tripel $(\Omega,\Sigma,P)$ nennt man \Begriff{Wahrscheinlichkeitsraum}
 \end{enumerate}
+\end{definition}
 
 Zusammenhang zur ``experimentellen'' oder ``intuitiven'' Wahrscheinlichkeit:
 
