@@ -230,3 +230,98 @@ Ein Zufallsexperiment wird im mathematischen Sinne durch einen Wahrscheinlichkei
  \item Für eine Menge $A \in \Sigma$ ist $P(A)$ die Wahrscheinlichkeit des Ereignisses $A$.
 \end{enumerate}
 
+\Vorlesung{28.4.2010}
+\subsection{Eigenschaften eines Wahrscheinlichkeitsmaßes}
+\begin{proposition}
+ Sei $(\Omega,\Sigma,P)$ ein Wahrscheinlichkeitsraum. Es seien $A,B,A_1,A_2, ... \in \Sigma$. Dann gilt:
+ \begin{enumerate}
+  \item $P(A^c) = 1 - P(A)$
+  \item $P( A \cup B ) + P( A \cap B ) = P(A) + P(B)$
+  \item Aus $A \subseteq B$ folgt $P(B \setminus A) = P(B) - P(A)$
+  \item Aus $A \subseteq B$ folgt $P(A) \leq P(B)$
+  \item Für $A_1, ... A_n \in \Sigma$ gilt:
+$$ P \left ( \bigcup_{i=1}^n A_i \right ) \leq \sum_{i=1} P(A_i)$$ ( Union-Bound )
+ \end{enumerate}
+\end{proposition}
+\begin{proof}
+
+ \begin{enumerate}
+  \item 
+\begin{quote}
+ Wir wissen schon, dass $P(\Omega) = 1$ gilt. Folglich ist zu zeigen, dass $ P(A^c) + P(A) = 1 = P(\Omega)$ gilt.
+\end{quote}
+\begin{equation}
+ P(\Omega)
+ = P(A \cup A^c)
+ = P(A) + P(A^c)
+\end{equation}
+\begin{quote}
+ Der letzte Schritt ist möglich, da $A$ und $A^c$ paarweise disjunkt sind.
+\end{quote}
+  \item
+$$ A \cup B = A \cup ( B \setminus A ) $$%
+Daraus folgt aufgrund der $\sigma$-Additivität:%
+$$ P(A \cup B) = P(A) + P( B \setminus A ) $$%
+Weiterhin gilt:%
+$$ B = B \setminus A \cup (A \cap B) \Rightarrow P(B) = P(B \setminus A) + P(A \cap B)$$
+$$ \Rightarrow P(B \setminus A) = P(B) - P(A \cap B) $$
+$$ \Rightarrow P(A \cup B) = P(A) + P(B) - P(A \cap B) $$
+  \item
+$$ B = A \dot{\cup} (B \setminus A) $$
+$$ \Rightarrow P(B) = P(A) + P(B \setminus A) $$
+$$ \Rightarrow P(B \setminus A) =  P(B) - P(A) $$
+  \item 
+$$ B = A \dot{\cup} (B \setminus A) $$
+$$ \Rightarrow P(B) = P(A) + P(B \setminus A) \geq P(A) $$
+  \item
+\begin{quote}
+ Für $n=2$ ist die Behauptung schon gezeigt.
+\end{quote}
+Versuch Darstellung als:
+$$ \bigcup_{i=1}^n A_i =  \bigcup_{i=1}^l B_i $$
+mit $B_i$ paarweise disjunkt.
+$$ B_1 = A_1 $$
+$$ B_2 = A_2 \setminus A_1 $$
+$$ B_3 = A_3 \setminus ( A_1 \cup A_2) $$
+$$ B_n = A_n \setminus ( A_1 \cup ... \cup A_{n-1} ) $$
+Die $B_i$ sind immer paarweise disjunkt und $B_i \subseteq A_i ; i \in 1,...,n$ so wie
+$$ \bigcup_{i=1}^n A_i =  \bigcup_{i=1}^n B_i $$
+$$ \Rightarrow P \left ( \bigcup_{i=1}^n A_i \right ) = P \left ( \bigcup_{i=1}^n B_i \right ) = \sum_{i=1}^n P(B_i) $$
+Nun wissen wir aber nach Konstruktion, dass jedes $B_i \subseteq A_i$ und somit $P(B_i) \leq P(A_i)$.
+Daraus folgt:
+$$ \sum_{i=1}^n P(B_i) \leq \sum_{i=1}^n P(A_i) $$
+ \end{enumerate}
+\end{proof}
+
+\subsection{Der Laplace-Raum}
+Sei $\Omega$ endllich. Sei $\Sigma = \mathcal P(\Omega)$ und $P: \Sigma \rightarrow [0,1], P(A):= \frac{\lvert A \rvert}{\lvert \Omega \rvert}$ für alle $A \in \Omega$. %
+$(\Omega, \Sigma)$ ist ein Meßraum, weil $\Sigma = \mathcal P(\Omega)$ eine $\sigma$-Algebra.
+$P$ ist ein Wahrscheinlichkeitsmaß, da:
+\begin{enumerate}
+ \item $P(A) \in [0,1] \forall A \subseteq \Omega$
+ \item $P(\emptyset) = \frac{\lvert A \rvert}{\lvert \Omega \rvert} = \frac{0}{\lvert \Omega \rvert} = 0$
+ \item $P(\Omega) = \frac{\lvert \Omega \rvert}{\lvert \Omega \rvert} = \frac{\lvert \Omega \rvert}{\lvert \Omega \rvert} = 1$
+ \item $A_1,A_2,... A_n \subseteq \Omega$ paarweise disjunkt.
+$$ P(A_1 \cup ... \cup A_n) = \frac{\lvert A_1 \cup ... \cup A_n \rvert}{\lvert \Omega \rvert} = \frac{\lvert A_1 \rvert + ... \lvert A_n \rvert}{\lvert \Omega \rvert} = $$
+$$ \frac{\lvert A_1 \rvert}{\lvert \Omega \rvert} + ... +  \frac{\lvert A_n \rvert}{\lvert \Omega \rvert} = P(A_1) + ... + P(A_n) = \sum_{i=1}^n P(A_i) $$
+\begin{quote}
+ Da $\Omega$ endlich ist, gibt es auch nur endlich viele verschieden Teilmengen.
+\end{quote}
+
+Mit ``Übergang'' aus $n \rightarrow \infty$ ist $P$ $\sigma$-Additiv, also ein Wahrscheinlichkeitsmaß.
+\end{enumerate}
+Also ist $(\Omega,\Sigma,P)$ ein Wahrscheinlichkeitsraum.
+
+
+\begin{enumerate}
+ \item 
+Gibt es ein Wahrscheinlichkeitsmaß $P$ auf $\mathbb N$ mit $\mathcal P(\mathbb N)$ als $\sigma$-Algebra, so dass $P(\{i\}) > 0 \forall i \in \mathbb N$?
+ \item
+Gibt es ein Wahrscheinlichkeitsmaß $P$ auf $\mathbb R$ mit geeigneter $\sigma$-Algebra, die alle einelementigen Mengen $\{x\}; x \in \mathbb R$ enthält und %
+$P(\{x\}) > 0$?
+\end{enumerate}
+\paragraph*{}
+\label{Zu 1}
+$P({i}) = \frac{1}{2^i}; i = 1,2,... $ (geometrische Folge). Dann ist
+$$P(\mathbb N) = P \left ( \bigcup_{i=1}^\infty \{i\} \right ) = \sum_{i=1}^\infty \frac{1}{2^i} %
+= \frac{1}{1-\frac{1}{2}} - 1 = 1$$ 
