@@ -325,3 +325,17 @@ $P(\{x\}) > 0$?
 $P({i}) = \frac{1}{2^i}; i = 1,2,... $ (geometrische Folge). Dann ist
 $$P(\mathbb N) = P \left ( \bigcup_{i=1}^\infty \{i\} \right ) = \sum_{i=1}^\infty \frac{1}{2^i} %
 = \frac{1}{1-\frac{1}{2}} - 1 = 1$$ 
+Wie sieht dann $P(A)$ für $A \subseteq \mathbb N$ aus?
+$$P(A) = \sum_{i \in A} P(\{i\})$$
+$$ \Rightarrow P(\emptyset) = 0 \textrm{ da die Leere Summe 0 ist.}$$
+Wir überzeugen uns, dass ein $P$ ein Wahrscheinlichkeitsmaß ist:
+\begin{enumerate}
+ \item $ P(\Omega) = P(\mathbb N) = 1 $
+ \item Sei $ A_1, A_2, ... A_n \subseteq \Omega \textrm{ paarweise disjunkt } $ dann gilt:
+\begin{eqnarray}
+ P(A_1 \cup ... \cup A_n) & = & \sum_{i \in A_1 \cup ... \cup A_n} P(\{i\}) \nonumber \\
+ & = & \sum_{i \in A_1} P(\{i\}) + ... + \sum_{i \in A_n} P(\{i\}) \nonumber \\
+ & = & P(A_1) + ... + P(A_n) \nonumber
+\end{eqnarray}
+Folglich ist $P$ ein Wahrscheinlichkeitsmaß.
+\end{enumerate}
