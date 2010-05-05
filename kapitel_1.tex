@@ -185,7 +185,7 @@ Frage:
 Gibt es Mengen $A \subseteq \mathbb R^d$ mit $A \neq \mathcal B^d$? bzw. $ \mathcal B ^d = \mathcal P (\mathbb R^d) $?
 
 Vorschlag:
-$$ \mathbb R^d \supset A = \bigcup_{a\in A} [a] \in \mathcal B^d $$
+$$ \mathbb R^d \supset A = \bigcup_{a\in A} \lbrack a \rbrack \in \mathcal B^d $$
 Die Vereinigung ist nur in $\mathcal B^d$ falls $A$ abzählbar ist.
 
 Es gibt Teilmengen des $\mathbb R^d$ die keine Borelmengen sind!
@@ -208,12 +208,12 @@ Ist $\Sigma$ eine $\sigma$-Algebra über $\Omega$, so nennt man $(\Omega,\Sigma)
 
 \begin{definition} Sei $(\Omega,\Sigma)$ ein Meßraum.
 \begin{enumerate}
- \item Eine Funktion $µ: \Sigma \rightarrow [0,\infty]$ heißt \Begriff{Maß} falls folgendes gilt:
+ \item Eine Funktion $\mu: \Sigma \rightarrow [0,\infty]$ heißt \Begriff{Maß} falls folgendes gilt:
   \begin{enumerate}
-   \item $µ(\emptyset) = 0$
+   \item $\mu(\emptyset) = 0$
 
    \item für jede Folge von paarweise disjunkten Mengen $A_1, A_2, ... \in \Sigma$ gilt:
-$$ µ \left ( \bigcup_{i=1}^\infty A_i \right ) = \sum_{i=1}^\infty µ \left ( A_i \right ) $$
+$$ \mu \left ( \bigcup_{i=1}^\infty A_i \right ) = \sum_{i=1}^\infty \mu \left ( A_i \right ) $$
   \end{enumerate}
  \item Ein Maß $P: \Sigma \rightarrow [0,1]$ mit $P(\Omega) = 1$ heißt \Begriff{Wahrscheinlichkeitsmaß}.
  \item Das Tripel $(\Omega,\Sigma,P)$ nennt man \Begriff{Wahrscheinlichkeitsraum}
@@ -320,8 +320,7 @@ Gibt es ein Wahrscheinlichkeitsmaß $P$ auf $\mathbb N$ mit $\mathcal P(\mathbb 
 Gibt es ein Wahrscheinlichkeitsmaß $P$ auf $\mathbb R$ mit geeigneter $\sigma$-Algebra, die alle einelementigen Mengen $\{x\}; x \in \mathbb R$ enthält und %
 $P(\{x\}) > 0$?
 \end{enumerate}
-\paragraph*{}
-\label{Zu 1}
+\paragraph*{Zu 1:}
 $P({i}) = \frac{1}{2^i}; i = 1,2,... $ (geometrische Folge). Dann ist
 $$P(\mathbb N) = P \left ( \bigcup_{i=1}^\infty \{i\} \right ) = \sum_{i=1}^\infty \frac{1}{2^i} %
 = \frac{1}{1-\frac{1}{2}} - 1 = 1$$ 
@@ -332,10 +331,95 @@ Wir überzeugen uns, dass ein $P$ ein Wahrscheinlichkeitsmaß ist:
 \begin{enumerate}
  \item $ P(\Omega) = P(\mathbb N) = 1 $
  \item Sei $ A_1, A_2, ... A_n \subseteq \Omega \textrm{ paarweise disjunkt } $ dann gilt:
-\begin{eqnarray}
- P(A_1 \cup ... \cup A_n) & = & \sum_{i \in A_1 \cup ... \cup A_n} P(\{i\}) \nonumber \\
- & = & \sum_{i \in A_1} P(\{i\}) + ... + \sum_{i \in A_n} P(\{i\}) \nonumber \\
+\begin{eqnarray*}
+ P(A_1 \cup ... \cup A_n) & = & \sum_{i \in A_1 \cup ... \cup A_n} P(\{i\}) \\
+ & = & \sum_{i \in A_1} P(\{i\}) + ... + \sum_{i \in A_n} P(\{i\}) \\
  & = & P(A_1) + ... + P(A_n) \nonumber
-\end{eqnarray}
+\end{eqnarray*}
 Folglich ist $P$ ein Wahrscheinlichkeitsmaß.
 \end{enumerate}
+
+\subsection{Lebesquemaß}
+\Vorlesung{3.5.2010}
+Als wichtiges Beispiel betrachten wir das \Begriff{Lebesguemaß}, das einerseits unser natürliches Verständnis des "Messens" von %
+regulären Mengeninhalten in $\mathbb R^d$ widerspigelt, aber gleichzeitig durch die Nullmengeneigenschaft unser Intuition %
+zuwiderläuft. Diese Nullmengeneigenschaft ist aber charackteristisch und grundlegend zum Verständnis der Wahrscheinlichkeitstheorie, %
+auch im diskreten Fall.
+Sei $\lbrack a,b \rbrack \in \mathbb R^d$ ein Intervall, für $a=(a_1, ... , a_d )$ und $b=(b_1, ... , b_d)$ sei
+$$ \lbrack a,b, \rbrack = \lbrack a_1,b_1 \rbrack \times ... \times \lbrack a_d,b_d \rbrack $$
+Das Volumen von $\lbrack a,b \rbrack$ ist offenbar $(b_1 - a_1) \cdot ... \cdot (b_d - a_d)$. Wir schreiben $Vol(\lbrack a,b \rbrack)$ %
+für das Volumen von $\lbrack a,b \rbrack$.
+
+Eine grundl Frage der Maptheorie ist die Frage:
+Gibt es ein Maß für Borelmengen $\mathcal B^d$ in $\mathbb R^d$, das für $\lbrack a,b \rbrack$ in $\mathbb R^d$ genau das Volumen angibt? %
+Diese Frage kann positiv beantwortet werden und ist ein grundlegendes Resultat der Maßtheorie. Wir notieren (ohne Beweiß):
+\begin{theorem}
+Für jedes $d\in \mathbb N $ gibt es ein Maß $\lambda^d, \lambda^d: \mathcal B^d \rightarrow \lbrack 0,\infty \lbrack$ %
+mit der Eigenschaft $\lambda^d(\lbrack a,b\rbrack) = Vol(\lbrack a,b \rbrack)$ für jedes Intervall $\lbrack a,b \rbrack \in \mathbb R^d$.
+\end{theorem}
+
+\begin{definition}
+$\lambda^d$ heißt $d$-dimensionales Lebesguemaß. Wir nenne $\lambda = \lambda^d$ Lebesguemaß.
+\end{definition}
+
+\begin{definition}
+Sie $(\Omega,\Sigma,\mu)$ ein Maßraum. Eine Menge $A \in \Sigma $ heißt $\mu$-Nullmenge, wenn $\mu(A)=0$.
+\end{definition}
+
+Für das Lebesguemaß haben wir:
+
+\begin{theorem}
+Jede abzählbare Menge in $\mathbb R^d$ ist eine Borelmenge und sogar eine Nullmenge bezüglich $\lambda$.
+\end{theorem}
+
+\begin{proof}
+Sei $A \subseteq \mathbb R^d$ und $A=\{a_1,a_2, ...  \}$. Wegen $A=\bigcup\limits_{i=1}^\infty \{a_i\}$ ist $A$ aus $\mathcal B^d$ %
+Wegen $\lambda^d(\{a_i\})=0$ folgt
+$$ \lambda^d(A)=\sum\limits_{i=1}^\infty \lambda^d(\{a_i\}) = 0 $$
+\begin{quote}
+$\lambda^d(\{a_i\})=0$ gilt, weil eine einzelne Zahl kein Volumen hat.
+\end{quote}
+\end{proof}
+
+Wenn man beachtet, dass $\mathcal B^d _{\lbrack 0,1\rbrack}$ eine $\sigma$-Algebra über $\lbrack 0,1 \rbrack$ ist, so erhält man:
+\begin{proposition}
+$(\lbrack 0,1 \rbrack,\mathcal B^d _{\lbrack 0,1\rbrack}, \lambda^d)$ ist ein Wahrscheinlichkeitsraum.
+\end{proposition}
+Nillmengen spielen in der Wahrscheinlichkeitstheorie eine grundlegende Rolle, denn ein Ereignis mit der Wahrscheinlichkeit %
+0 tritt nicht auf.
+
+\section{Bedingte Wahrscheinlichkeiten}
+Ereignisse können sich in vielfacher Weise beeinflussen. Es ist daher von grundlegender Bedeutung, der Einfluss eines %
+Ereignisses auf das auftreten eines anderen Ereignisses mathematisch zu formulieren.
+\begin{definition}[bedingte Wahrscheinlichkeit]
+Sei $(\Omega,\Sigma,P)$ ein Wahrscheinlichkeitsraum und $A,B \in \Sigma$ mit $P(B) > 0$. Der Ausdruck
+$$ P(A|B) = \frac{P(A\cap B)}{P(B)} $$
+ist die \Begriff{bedingte Wahrscheinlichkeit} von A gegeben B.
+\end{definition}
+Ein besonderer Fall liegt vor, wenn $P(A \cap B)=P(A) \cdot P(B)$ ist. Dann gilt:
+$$ P(A|B) = \frac{P(A\cap B)}{P(B)} = \frac{P(A) \cdot P(B)}{P(B)} = P(A) $$.
+d.h. $B$ hat keinen Einfluss auf $A$. Umgangssprachlich sagen wir, dass $A$ von $B$ unabhängig ist. Der Begriff der %
+\Begriff{Unabhängigkeit} ist ein grundlegendes Konzept, das wir später definieren werde.
+Mithilfe der bedingten Wahrscheinlichkeit können wir $P(A \cap B)$ für beliebige Ereignisse $A,B \in \Sigma$ %
+( mit $P(B) > 0$ ) berechnen. Gemäß Def(1.12) gilt:
+$$ P(A \cap B) = P( A|B ) \cdot P(B) \text{1.4} $$
+Falls $A$ und $B$ unabhängig sind, vereinfacht sich diese Gleichung wieder zu $P(A \cap B) = P(A) \cdot P(B)$, %
+das heißt sie enthält den Fall "unabhängige Ereignisse" als wichtigen Spezialfall. Gleichung 1.4 lässt sich für mehr %
+als zwei Ereignisse verallgemeinern (siehe nächster Satz).
+\begin{proposition}[Multiplikationssatz]
+Seien $A_1,...,A_n$ Ereignisse mit $P \left ( \bigcap\limits_{i=1}^{n-1} A_i \right ) > 0$. Dann gilt:
+$$ P \left ( \bigcap\limits_{i=1}^{n} A_i \right ) = P(A_1) \cdot P(A_2 | A_1) \cdot P(A_3 | A_1 \cap A_2 ) \cdot ... \cdot P \left ( A_n | \bigcap\limits_{i=1}^{n-1} A_i \right ) $$
+\end{proposition}
+\begin{proof}
+Wegen $P(A_1) => P( A_1 \cap A_2 ) => .. =>  P \left ( \bigcap\limits_{i=1}^{n-1} A_i \right ) > 0$ sind alle bedingten %
+Wahrscheinlichkeiten wohldefiniert. Es gilt 
+\begin{eqnarray*}
+P(A_1) \cdot P(A_2 | A_1) \cdot P(A_3 | A_1 \cap A_2 ) \cdot ... \cdot P \left ( A_n | \bigcap\limits_{i=1}^{n-1} A_i \right ) & = & \frac{P(A_1)}{1} \cdot \frac{P(A_1 \cap A_2)}{P(A_1)} \cdot ... \cdot \frac{P(A_1 \cap ... \cap A_n)}{P(A_1 \cap ... \cap A_{n-1})}
+\cr & = & P(A_1 \cap ... \cap A_n)
+\end{eqnarray*}
+\end{proof}
+\begin{theorem}[Satz der totalen Wahrscheinlichkeit]
+Die Ereignisse $B_1,...,B_n$ sidn paarweise disjunkt mit $P(B_i) > 0$ für $i=1,...,n$ und es gelte $\Omega = B_1 \cup ... \cup B_n$. %
+Dann folgt:
+$$ P(A) = \sum\limits_{i=1}^{n} P(A|B_i) \cdot P(B_i) \forall A \in \Sigma$$
+\end{theorem}
