@@ -406,6 +406,11 @@ $$ P(A \cap B) = P( A|B ) \cdot P(B) \text{1.4} $$
 Falls $A$ und $B$ unabhängig sind, vereinfacht sich diese Gleichung wieder zu $P(A \cap B) = P(A) \cdot P(B)$, %
 das heißt sie enthält den Fall "unabhängige Ereignisse" als wichtigen Spezialfall. Gleichung 1.4 lässt sich für mehr %
 als zwei Ereignisse verallgemeinern (siehe nächster Satz).
+
+Wenn $P(A \cap B) = P(A) \cdot P(B)$, dann $P(A|B) = P(A)$. Dann ist A "unabhängig" von B.
+
+Wenn $A \cap B = \emptyset$, dann ist $P(A \cap B)=P(\emptyset)=0$.
+
 \begin{proposition}[Multiplikationssatz]
 Seien $A_1,...,A_n$ Ereignisse mit $P \left ( \bigcap\limits_{i=1}^{n-1} A_i \right ) > 0$. Dann gilt:
 $$ P \left ( \bigcap\limits_{i=1}^{n} A_i \right ) = P(A_1) \cdot P(A_2 | A_1) \cdot P(A_3 | A_1 \cap A_2 ) \cdot ... \cdot P \left ( A_n | \bigcap\limits_{i=1}^{n-1} A_i \right ) $$
@@ -419,7 +424,61 @@ P(A_1) \cdot P(A_2 | A_1) \cdot P(A_3 | A_1 \cap A_2 ) \cdot ... \cdot P \left (
 \end{eqnarray*}
 \end{proof}
 \begin{theorem}[Satz der totalen Wahrscheinlichkeit]
-Die Ereignisse $B_1,...,B_n$ sidn paarweise disjunkt mit $P(B_i) > 0$ für $i=1,...,n$ und es gelte $\Omega = B_1 \cup ... \cup B_n$. %
+Die Ereignisse $B_1,...,B_n$ sind paarweise disjunkt mit $P(B_i) > 0$ für $i=1,...,n$ und es gelte $\Omega = B_1 \cup ... \cup B_n$. %
 Dann folgt:
 $$ P(A) = \sum\limits_{i=1}^{n} P(A|B_i) \cdot P(B_i) \forall A \in \Sigma$$
+Motivation: man möchte $P(A)$ berechnen. $A$ liegt jedoch in einer Weise vor, dass wir $P(A)$ nicht direkt berechnen können. %
+Falls alle $P(A \cap B_i)$ leichter zu berechnen wären als $P(A)$, so könnte man mit Satz 1.15 $P(A)$ leicht berechnen.
 \end{theorem}
+\Vorlesung{5.5.2010}
+\begin{proof}
+\begin{align*}
+\sum\limits_{i=1}^n P(A|B_i) \cdot P(B_i) & = \sum\limits_{i=1}^n P(A \cap B_i) \\ %
+	& = P \left( \bigcup\limits_{i=1}^n ( A \cap B_i ) \right ) \\ %
+	& = P \left( A \cap \left( \bigcup\limits_{i=1}^n B_i \right) \right ) \\ %
+	& = P ( A \cap \Omega ) \\ %
+	& = P(A)
+\end{align*}
+\end{proof}
+\subsection{Lösung des Ziegenproblems}
+Betrachte geeignete Ereignisse:
+\begin{alignl*}
+A &:= \text{Kandidatin hat bei erster Wahl das Auto gewählt} \\ %
+G &:= \text{Kandidatin gewinnt nach dem Wechsel der Tür das Auto}
+\end{alignl*}
+Uns interessiert $P(G)$ im Vergleich zu $P(A)$. Falls der Tip ohne Hilfe abgegeben wurde, so ist $P(A)=\frac{1}{3}$.
+\begin{quote}
+Nun haben wir eine Situation in der wir $P(G)$ nicht direkt berechnen können. Aber wir können folgendes mit Satz 1.15 machen:\end{quote}
+\begin{align*}
+P(G)=P(G|A)\cdot P(A) + P(G|A^c)\cdot P(A^c)
+\end{align*}
+Nun ist $P(G|A)=0$ und somit $P(G|A)\cdot P(A) = 0$. Weiterhin ist $P(G|A^c)=1$ und $P(A^c)=\frac{2}{3}$ und somit %
+$P(G|A^c)\cdot P(A^c) = \frac{2}{3}$. Folglich ist $P(G) = \frac{2}{3} > P(A)$.
+
+\subsection{Lösung des Geburtstagsproblems}
+\begin{quote}
+Dieses Problem gehen wir mit der Proposition 1.14 an.
+\end{quote}
+Modelliere das Problem mit Hilfe von Urnen. Wir haben $n$ Urnen ( z.B. $n = 365$ ). Wir werfen jeden der $m$ Bälle ( z.B. %
+Personen ) zufällig unter Gleichverteilung in die Urnen. Wir setzen vorraus $m \leq n$. Die Wahrscheinlichkeit, dass ein %
+Ball in die $i$-te Urne fällt ist $\frac{1}{n}$.
+\begin{quote}
+Wir nehmen an, dass die Wahrscheinlichkeit an einem bestimmten Tag Geburtstag zu haben nicht vom Tag abhängt.
+\end{quote}
+$A$ ist das Ereignis, dass alle Bälle in unterschiedlichen Urnen landen. $A^c$ ist das gewünschte Ereignis, nämlich %
+dass in mindestens einer Urne mehr als ein Ball landet.
+Wir berechnen $P(A^c)$ über $P(A^c)=1-P(A)$ und einer Abschätzung des schlechten Ereignisses $P(A) \leq \alpha$, was zu %
+$P(A^c) = 1-P(A) \geq 1-\alpha$ führt.
+Sei:
+\begin{alignl*}
+A_i &:= \text{Ball } i \text{ landet in einer noch leeren Urne}
+\end{alignl*}
+dann ist:
+\begin{align*}
+P(A) &= P \left ( \bigcap\limits_{i=1}^m A_i \right )
+\end{align*}
+Dann können wir den multiplikationssatz anwenden.
+\begin{align*}
+P \left ( \bigcap\limits_{i=1}^m A_i \right ) &= P(A_i) \cdot P(A_2|A_1) \cdot ... \cdot P(A_m|\bigcap\limits_{i=1}^{n-1} A_i )
+\end{align*}
+Schätze jeden Faktor nach oben ab:
