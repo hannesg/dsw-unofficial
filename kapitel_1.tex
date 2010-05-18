@@ -2,12 +2,12 @@
 \chapter{Mathematische\ Modellierung\ des\ Zufalls}
 \section{Zufallsexperimente}
 \subsection{Das Würfeln}
-\Vorlesung{14.4.2010}
+\Vorlesung{14.4.2010}y
 $\Omega = \lbrace 1, ... , n  \rbrace , n \in \mathbb{N}$ Wir möchten zufällig genau eine Zahl aus $\Omega$ ziehen. Eine Möglichkeit: n-seitiger Würfel\newline
 Ansatz: $Pr[i] = \frac{1}{n}  \forall i \in \Omega$\newline
 $Pr \mathrel{\widehat{=}} ``Probability''$\newline
 Sei $A=\lbrace a_1, ... , a_k \rbrace \subset \Omega$, dann ist $Pr[A]=\frac{\left|A\right|}{n} = \frac{k}{n}$ die Wahrscheinlichkeit, dass $a_1, ..., a_{k-1}$ oder $a_{k}$ ausgewählt werden.\newline
-A nennt man \Begriff{Ergeignis}\newline
+A nennt man \Begriff{Ereignis}\newline
 Wenn alle $Pr[i]$ gleich sind so spricht man von einer \Begriff{Gleichverteilung}.\newline
 Bei Spielen: n=6
 Es herrscht Unabhängigkeit der Würfe, d.h. Ergebnisse beeinflussen sich nicht.
@@ -37,7 +37,7 @@ Er schlägt vor eine Tür zu öffnen und danach soll der Kandidat die Möglichke
 Würden Sie sein Angebot annehmen?
 % Abb 2
 \begin{quote}
- In diesem Fall ist es nicht so einfach, da die günstigen Ergeignisse nicht unabhängig sind.
+ In diesem Fall ist es nicht so einfach, da die günstigen Ereignisse nicht unabhängig sind.
 \end{quote}
 \section{Algebra und Maße}
 Die axiomatische Fundierung der Wahrscheinlichkeitsrechnung wurder von Kolmogoroff Anfang des 20. Jahrhunderts gegeben. Erst dadurch wurde Wahrscheinlichkeitsrechnung eine wissenschaftliche und quantitative Disziplin.
@@ -442,10 +442,10 @@ Falls alle $P(A \cap B_i)$ leichter zu berechnen wären als $P(A)$, so könnte m
 \end{proof}
 \subsection{Lösung des Ziegenproblems}
 Betrachte geeignete Ereignisse:
-\begin{alignl*}
+\begin{align*}
 A &:= \text{Kandidatin hat bei erster Wahl das Auto gewählt} \\ %
 G &:= \text{Kandidatin gewinnt nach dem Wechsel der Tür das Auto}
-\end{alignl*}
+\end{align*}
 Uns interessiert $P(G)$ im Vergleich zu $P(A)$. Falls der Tip ohne Hilfe abgegeben wurde, so ist $P(A)=\frac{1}{3}$.
 \begin{quote}
 Nun haben wir eine Situation in der wir $P(G)$ nicht direkt berechnen können. Aber wir können folgendes mit Satz 1.15 machen:\end{quote}
@@ -470,9 +470,9 @@ dass in mindestens einer Urne mehr als ein Ball landet.
 Wir berechnen $P(A^c)$ über $P(A^c)=1-P(A)$ und einer Abschätzung des schlechten Ereignisses $P(A) \leq \alpha$, was zu %
 $P(A^c) = 1-P(A) \geq 1-\alpha$ führt.
 Sei:
-\begin{alignl*}
+\begin{align*}
 A_i &:= \text{Ball } i \text{ landet in einer noch leeren Urne}
-\end{alignl*}
+\end{align*}
 dann ist:
 \begin{align*}
 P(A) &= P \left ( \bigcap\limits_{i=1}^m A_i \right )
@@ -482,3 +482,266 @@ Dann können wir den multiplikationssatz anwenden.
 P \left ( \bigcap\limits_{i=1}^m A_i \right ) &= P(A_i) \cdot P(A_2|A_1) \cdot ... \cdot P(A_m|\bigcap\limits_{i=1}^{n-1} A_i )
 \end{align*}
 Schätze jeden Faktor nach oben ab:
+
+\Vorlesung{10.5.2010}
+\section{Stochastische Unabhängigkeit}
+\begin{definition}
+Seien $A_1, ...  , A_n$ Ereignisse.
+\begin{enumerate}
+\item Für ein festes $k \in \mathbb N, 2 \leq k \leq n$ heißen $A_1 , ..., A_n$ $k$-weise unabhängig, fallls für jede Auswahl %
+$A_{i_1}, ... , A_{i_k}$ von $k$ Ereignissen aus den $A_1 , ... , A_n$ gilt:
+\begin{align*}
+P \left ( \bigcap\limits_{j=1}^k A_{i_j} \right ) = \prod\limits_{j=1}^k P(A_{i_j})
+\end{align*}
+
+\item Die Ereignisse $A_1, .. A_n $ heißen unabhängig ( \Begriff{stochastisch unabhängig} ), falls für jede Teilmenge $J \subseteq \{1,...n\}, J \neq \emptyset$ gilt:
+\begin{align*}
+P \left ( \bigcap\limits_{j \in J} A_{i_j} \right ) = \prod\limits_{j \in J} P(A_{i_j})
+\end{align*}
+\end{enumerate}
+\end{definition}
+\begin{quote}
+Wenn $A_1, ..., A_n$ unabhängig ist, dann auch $k$-weise unabhängig für jedes $k \in \{2, ... , n\}$.
+\end{quote}
+Für $n=2$ spricht man von paarweiser Unabhängigkeit. Das bedeutet, dass aus $A_1,A_2, ... A_n$ je zwei unabhängig sind. %
+Sind dann alle voneinander unabhängig?
+
+\begin{example}
+Sei $\Omega = \{1,2,3,4\}$. Betrachte das Experiment, aus $\Omega$ eine Zahl zufällig mit Wahrscheinlichkeit $\frac{1}{4}$ %
+auszuwählen, unter Gleichverteilung.
+\begin{itemize}
+	\item $A$ sei das Ereignis: $1$ oder $2$ wird gewählt
+	\item $B$ sei das Ereignis: $1$ oder $3$ wird gewählt
+	\item $C$ sei das Ereignis: $1$ oder $4$ wird gewählt
+\end{itemize}
+\paragraph*{$2$-weise Unabhängigkeit}
+\begin{align*}
+P(A) P(B) &= \left( \frac{1}{4} + \frac{1}{4} \right)\left( \frac{1}{4} + \frac{1}{4} \right) \\
+&=\frac{1}{4} \\
+&= P(A\cap B)
+\end{align*}
+analog zerlegt man $P(A)P(C)$ und $P(B)P(C)$. Also ist paarweise unabhängigkeit gegeben.
+\paragraph*{$3$-weise Unabhängigkeit}
+\begin{align*}
+P(A) P(B) P(C)&= \left( \frac{1}{4} + \frac{1}{4} \right)\left( \frac{1}{4} + \frac{1}{4} \right)\left( \frac{1}{4} + \frac{1}{4} \right) \\
+&=\frac{1}{8} \\
+&\neq \frac{1}{4} = P(A\cap B \cap C)
+\end{align*}
+Also keine $3$-weise Unabhängigkeit.
+\end{example}
+
+Hieraus folgt: Aus $k$-weiser Unabhängigkeit für ein festes $k$ folgt \textbf{nicht} notwendigerweise volle Unabhängigkeit. 
+
+\begin{example}
+Wir werfen einen Würfel zweimal hintereinander. Sei
+\begin{itemize}
+\item $A$ das Ereigniss, dass beim ersten Wurf eine gerade Zahl auftritt
+\item $B$ das Ereigniss, dass beim zweiten Wurf eine gerade Zahl auftritt
+\end{itemize}
+$A$ und $B$ sind nach dem intuitiven Verständnis "unabhängig". Wir zeigen, dass sie auch im stochastischen Sinne %
+unabhängig sind. Dazu muss das Experiment durch einen geeigneten Wahrscheinlichkeitsraum modelliert werden. %
+Wähle $\Omega_1=\{1,2,3,4,5,6\}$ für den ersten Wurf und $\Omega_2$ ebenso für den zweiten Wurf.
+\begin{quote}
+Diese reichen nicht aus. Wir wollen ja nicht nur zwei einzelne Würfe betrachten, sondern eine Kombination aus zwei %
+Würfen.
+\end{quote}
+Dann ist $\Omega = \Omega_1 \times \Omega_2$. $(i,j) \in \Omega$ repräsentiert, dass $i$ das Ergebnis des ersten Wurfes %
+ist und $j$ das Ergebnis des zweiten Wurfes ist. Weiterhin gilt:
+\begin{align*}
+\Omega = \{ (i,j) : 1 \leq i,j \leq 6 \}
+\end{align*}
+Das Wahrscheinlichkeitsmaß $P$ wählen wir als die Gleichverteilung über $\Omega$ d.h.:
+\begin{align*}
+\mathbb P(\{(i,j)\}) = \frac{1}{\lvert \Omega \rvert} = \frac{1}{36} \forall (i,j) \in \Omega
+\end{align*}
+Wähle $\Sigma = \mathcal P(\Omega)$. Dann haben wir den Laplaceraum $(\Omega,\Sigma,\mathbb P)$. Daraus folgt: 
+\begin{align*}
+\mathbb P(A) &= \mathbb P ( \{(i,j) : 1\leq i,j \leq 6, i \text{ gerade} \}) \\
+	&=\frac{\lvert A \rvert}{\lvert \Omega \rvert} \\
+	&=\frac{18}{36} = \frac{1}{2}
+\end{align*}
+Analog dazu gilt $\mathbb P(B)= \frac{1}{2}$. D.h.:
+\begin{align*}
+\mathbb P(A)\mathbb P(B) &= \frac{1}{2} \frac{1}{2} = \frac{1}{4}
+\end{align*}
+Betrachte weiterhin:
+\begin{align*}
+A \cap B &= \{(i,j) : 1\leq i,j \leq 6, i,j \text{ gerade} \}
+\lvert A \cap B \rvert &= 9
+\mathbb P(A \cap B) &= \frac{\lvert A \cap B \rvert}{\lvert \Omega \rvert} \\
+	&= \frac{9}{36} = \frac{1}{4}
+\end{align*}
+Also gilt:$\mathbb P(A)\mathbb P(B) = \mathbb P(A \cap B)$, d.h. $A$ und $B$ sind unabhängig.
+\end{example}
+
+\subsection{Informationstheoretischer Aspekt}
+Betrachte $n$ Würfe einer fairen Münze. Dann gibt es unterschiedliche Möglichkeiten:
+\begin{enumerate}
+\item Die Würfe sind unabhängig voneinander
+\item Je zwei Würfe sind unabhängig
+\end{enumerate}
+\begin{quote}
+Der erste Möglichkeit ist einfach zu realisieren.
+\end{quote}
+Wieviele zufällige Bits benötigt man um diese Experimente zu beschreiben?
+\begin{enumerate}
+\item Man benötigt genau $n$ Bits.
+
+\end{enumerate}
+
+\Vorlesung{12.5.2010}
+Ein endliches Problem $\Pi$ mit Instanzen $x \in \{0,1\}*$, Kodierungslänge $\lvert x \rvert =$ Anzahl der Komponenten %
+von $x$, $\lvert x \rvert < \infty$. Ein Polynomzeitalgorithmus benötigt $\mathcal O(\lvert x \rvert ^ k)$ Schritte %
+, $k \in \mathbb N$ fest abhängig von $\Pi$, um das Problem $\Pi$ mit Instanz $x$ zu lösen.
+Lösen bedeutet hier: Entscheiden, ob $\Pi$ lösbar ist obder nicht, dabei ist $\Pi$ also ,,Ja``, ,,Nein`` Entscheidungs%
+problem gegeben. z.B.: $p \in \mathbb N$, Frage: Ist $p$ eine Primzahl?
+
+Zahlen $r \in \mathbb N$ bzw $r \in \mathbb Q$ werden binär kodiert : $\lvert r \rvert = \lceil log_2 r \rceil $ %
+Für $r \in \mathbb Q, r = \frac{a}{b}, \lvert r \rvert := \lvert a \rvert + \lvert b \rvert$.
+
+\begin{example}
+Problem: Sei $G=(V,E)$ ein Graph mit Kantengewichten $w: E \rightarrow \mathbb N$.
+Frage: Besitzt $G$ einen aufspannenden Baum mit Gewicht höchstens $W \in \mathbb N$?
+Sei $\Pi$ obiges Problem. Wie ist die Kodierungslänge diese Problems.
+$x$ sei Instanz mit $G=(V,E)$ und $w$.
+\begin{align*}
+\lvert x \rvert &= \lvert V \rvert + \lvert E \rvert + \sum\limits_{\varphi \in E} \lceil log_2 w(\varphi) \rceil
+\end{align*}
+\end{example}
+\begin{remark}
+Probleme werden eingeteilt in:
+\end{remark}
+\begin{itemize}
+	\item[Die Klasse $\mathcal P$] Die Klasse der endlichen Probleme, die in Polynomialzeit lösbar sind.
+	\item[Die Klasse $\mathcal{NP}$] Die Klasse der endlichen Probleme, deren Lösungen in Polynomialzeit verifizierbar %
+sind
+\end{itemize}
+\subsection*{Schematische Darstellung von P und NP}
+\begin{center}
+	\includegraphics[scale=0.50]{kapitel1_darstellung_p.png}
+	\captionof{figure}{Darstellung eines Algorithmus aus $\mathcal P$}
+	\label{fig:p}
+\end{center}
+
+\begin{center}
+	\includegraphics[scale=0.50]{kapitel1_darstellung_np.png}
+	\captionof{figure}{Darstellung eines Algorithmus aus $\mathcal NP$}
+	\label{fig:np}
+\end{center}
+\subsection*{Einbeziehung des Zufalls}
+%\begin{center}
+%	\includegraphics[scale=1.00]{kapitel1_darstellung_np_zufall.png}
+%	\captionof{figure}{Darstellung eines Algorithmus aus $\mathcal NP$ unter Einbeziehung von Zufälligkeit}
+%	\label{fig:np_zufall}
+%\end{center}
+Sei $\Pi$ ein Problem in $\mathcal NP$. Das Orakel gibt uns einen Beweis/Lösung $\pi$. Nehmen wir mal an, dass $\pi$ eine %
+wirkliche Lösung ist. $\pi$ habe $l$ Stellen. Wieviele Stellen von $\pi$ muss man lesen um in polynomieller Zeit in %
+$\lvert x \rvert$ zu verifizieren, dass $\pi$ wirklich eine Lösung ist?
+Im Allgemeinen müssen wir alle $l$ Einträge von $\pi$ lesen! Dabei sollte gelten: $l=\mathcal O(\lvert x \rvert^k), k \text{ konstant}$.
+
+Wieviele Stellen von $\pi$ muss ich lesen, wenn ich noch Random Bits $\tau$, $\lvert \tau \rvert = r$ zur Verfügung habe?
+\begin{theorem}[Arora, Motwani, Lund, Szegdi '94; PCP-Theorem]
+Man kann mit $log(\lvert x \rvert)$ Stellen von $\pi$ und konstant vielen Random Bits verifizieren, ob $\pi$ eine Lösung ist.
+( Neue Characterisierung von $\mathcal{NP}$!
+\end{theorem}
+\begin{quotation}
+New York Times: ,,Short-Cut to long proofs``.
+\end{quotation}
+Anwendung auf den Spannbaum.
+Eingabe $x$ mit Beweis $\Pi$ seien $2^100$ bzw. $2^80$ Bit groß. Diese Eingabe passt in keinen Speicher.
+Nach dem Theorem reicht es $100$ bzw. $80$ Bits und eine konstante Menge an zufälligen Bits zu lesen!
+
+
+\section{Diskrete Wahrscheinlichkeitsverteilung}
+Seien $(\Omega, \Sigma,\mathbb P)$ ein Wahrscheinlichkeitsraum. Man nennt $\mathbb P$ auch \Begriff{Wahrscheinlichkeitsverteilung} %
+Die Begriffe Wahrscheinlichkeitsverteilung und Wahrscheinlichkeitsmaß werden synonym verwendet.
+
+\subsection{Die Binomialverteilung}
+Sei $\Omega = \{0,1,2, ..., n \}$ . Sei $0 \leq p \leq 1$. Für $\omega \in \Omega$ setzen wir 
+\begin{align*}
+p(\omega) &:= \binom{n}{k} \cdot p^k \cdot (1-p)^(n-k) 
+\end{align*}
+
+$\vec{p}(p(0),p(1),p(2),...,p(n))$ heißt der \Begriff{stochastische Vektor}. Sei $\Sigma := \mathcal P(\Omega)$ und definiere %
+ein Wahrscheinlichkeitsmaß auf $\Sigma$ wie folgt: 
+Für alle $A \in \Sigma$ sei
+\begin{align*}
+B_{(n,p)}(A) &:= \sum\limits_{\omega \in A} p(\omega) \\
+	&= \sum\limits_{\omega \in A} \binom{n}{\omega}p^\omega(1-p)^{n-\omega}
+\end{align*}
+eine Funktion $B_{(n,p)}: \Sigma \rightarrow \lbrack 0,1 \rbrack$
+
+\begin{theorem}
+$B_{(n,p)}$ ist ein Wahrscheinlichkeitsmaß.
+\end{theorem}
+\begin{proof} Es sind drei Eigenschaften zu zeigen:
+\newline
+\begin{enumerate}
+	\item\emph{$B_{(n,p)}(\Omega) = 1$:}
+\begin{align*}
+B_{(n,p)}(\Omega) &= \sum\limits_{\omega \in \Omega}p(\omega) \\
+	&= \sum\limits_{\omega =0}^n \binom{n}{\omega}p^\omega(1-p)^{n-\omega}
+	&= (p + (1 - p))^n = 1^n = 1
+\end{align*}
+	\item\emph{$0 \leq B_{(n,p)}(A) \leq 1 \forall A \subseteq \Omega$:}
+siehe vorheriger Punkt
+	\item\emph{$\sigma$-Additivität:}
+Für $A_1,A_2, ... \in \Sigma $ paarweise disjunkt gilt, da es höchstens $l \leq n+1$ nicht-leere Teilmengen von $\Omega$ %
+gibt:
+\begin{align*}
+B_{(n,p)}\left (\bigcup\limits_{i=1}^\infty A_i \right) &= B_{(n,p)}\left (\bigcup\limits_{k=1}^{l} A_{i_k} \right) \\
+A &= \bigcup\limits_{k=1}^{l} A_{i_k} \\
+B_{(n,p)}(A) &= \sum\limits_{\omega \in A} p(\omega) \\
+	&= \sum\limits_{\omega \in A_{i_1}} p(\omega) +  ... + \sum\limits_{\omega \in A_{i_l}} p(\omega) \\
+	&= B_{(n,p)}(A_{i_1}) + ... + B_{(n,p)}(A_{i_l}) \\
+	&= \sum\limits_{k=1}^{l} B_{(n,p)}(A_{i_k}) \\
+	&= \sum\limits_{i=1}^{\infty} B_{(n,p)}(A_{i})
+\end{align*}
+\end{enumerate}
+\end{proof}
+Das Wahrscheinlichkeitsmaß $B_{(n,p)}$ nennt man \Begriff{Binomialverteilung}.
+\begin{definition}
+Sei $\Omega$ eine abzählbar endlichen oder unendlichen Menge. Eine Funktion $p:\Omega \rightarrow \lbrack 0,1 \rbrack$ heißt %
+\Begriff{stochastischer Vektor} falls $\sum\limits_{\omega \in \Omega} p(\omega) = 1$.
+\end{definition}
+\begin{theorem}\label{theorem:EndlicherWahrscheinlichkeitsraum}
+Sei $p$ ein stochastischer Vektor über $\Omega$. Dann ist $(\Omega, \Sigma, \mathbb P)$ mit
+\begin{align*}
+\Sigma &:= \mathcal P(\Omega) \\
+\mathbb P&: \Sigma \rightarrow \lbrack 0,1 \rbrack \\
+P(A) &:= \sum\limits_{\omega \in A} p(\omega) , A \in \Sigma
+\end{align*}
+ein Wahrscheinlichkeitsraum und $\mathbb P$ ein Wahrscheinlichkeitsmaß.
+\end{theorem}
+\begin{proof} Es sind drei Eigenschaften zu zeigen:
+\newline
+\begin{enumerate}
+\item\emph{$\mathbb P(\Omega) = 1$:}
+Nach Definition:
+\begin{align*}
+\mathbb P(\Omega) &= \sum\limits_{\omega \in \Omega}p(\omega) &= 1
+\end{align*}
+	\item\emph{$0 \leq B_{(n,p)}(A) \leq 1 \forall A \subseteq \Omega$:}
+siehe vorheriger Punkt
+	\item\emph{$\sigma$-Additivität:}
+Sei $A_1,A_2, ... $ eine Folge aus $\Sigma = \mathcal P(\Omega)$ von paarweise disjunkten Mengen. Dann gilt nach Definition %
+von $p$:
+\begin{align*}
+\mathbb P\left ( \bigcup\limits_{i=1}^\infty A_i \right ) &= \sum\limits_{\omega \in A_1}p(\omega) + \sum\limits_{\omega \in A_1}p(\omega) + ... \\
+	&= \mathbb P(A_1) + \mathbb P(A_2) + ... \\
+	&= \sum\limits_{i=1}^\infty P(A_i)
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\subsection{Konstruktionsprinzip für endliche Wahrscheinlichkeitsmaße}
+\begin{enumerate}
+\item $\Omega$ endlich gegeben
+\item Definiere $p(\omega), \omega \in \Omega$.
+\item Zeige $\sum\limits_{\omega \in \Omega} p(\omega) = 1$.
+\end{enumerate}
+Dann erhalten wir mit Satz \ref{EndlicherWahrscheinlichkeitsraum} einen endlichen Wahrscheinlichkeitsraum $(\Omega,\mathcal P(\Omega),\mathbb P)$.
+Dies gilt auch für abzählbar unendliche $\Omega$.
+
+\subsection{Bernoulli-Verteilung}
+$\Omega = \{0,1\}$, $\Sigma = \mathcal P(\Omega)$ und $p(\omega):=p^{\omega} (1-p)^{1-\omega}, \omega \in \Omega$ mit 
